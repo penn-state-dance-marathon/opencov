@@ -38,14 +38,17 @@ defmodule Opencov.Mixfile do
      {:basic_auth, "~> 2.0"},
      {:navigation_history, "~> 0.2"},
      {:ex_machina, "~> 2.0"},
-     {:mailman, "~> 0.3"},
-     {:eiconv, github: "zotonic/eiconv"},
+     {:mailman, "~> 0.4"},
+     {:eiconv, "~> 1.0"},
      {:scrivener_html, "~> 1.3"},
      {:secure_password, "~> 0.4"},
      {:seedex, "~> 0.1.3"},
+     {:poison, "~> 3.1"},
+    #  {:samly, github: "handnot2/samly"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:mix_test_watch, "~> 0.2", only: :dev},
      {:excoveralls, "~> 0.6", only: :test},
+    #  {:poison, "~> 4.0"},
      {:mock, "~> 0.3", only: :test}]
   end
 

@@ -31,6 +31,13 @@ defmodule Opencov.Router do
     plug :accepts, ["json"]
   end
 
+  # Add the following scope ahead of other routes
+  # Keep this as a top-level scope and **do not** add
+  # any plugs or pipelines explicitly to this scope.
+  scope "/sso" do
+    forward "/", Samly.Router
+  end
+
   scope "/api/v1", Opencov.Api.V1, as: :api_v1 do
     pipe_through :api
 

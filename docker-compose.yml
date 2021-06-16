@@ -4,14 +4,29 @@ services:
   postgres:
     image: postgres:9.5
     volumes:
-      - ./postgresql-data:/var/lib/postgresql/data/pgdata
+      - postgresql-data:/var/lib/postgresql/data/pgdata
     environment:
       PGDATA: /var/lib/postgresql/data/pgdata
       POSTGRES_PASSWORD: 112233
+    expose:
+      - 3600
+    networks: 
+      - internal
 
   opencov:
-    image: danhper/opencov:latest
+    build: .
     ports:
-      - "4000:4000"
+      - "8000:4000"
     volumes:
       - ./config/local.sample.exs:/opencov/config/local.exs
+      - .:/opencov
+    networks: 
+      - internal
+    depends_on: 
+      - postgres
+
+networks:
+  internal: 
+  
+volumes: 
+  postgresql-data:

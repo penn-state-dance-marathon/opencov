@@ -1,4 +1,4 @@
-FROM elixir:1.5-alpine
+FROM elixir:1.12-alpine
 
 RUN apk add --update-cache build-base git postgresql-client nodejs yarn
 
@@ -8,12 +8,15 @@ ENV MIX_ENV prod
 
 RUN mix local.hex --force && mix local.rebar --force
 
-COPY mix.exs mix.lock package.json yarn.lock ./
+COPY package.json ./
+RUN yarn install
 
-RUN yarn install && mix deps.get
+COPY mix.exs ./
+RUN mix deps.get || cat erl_crash.dump
 
 COPY . .
 
-RUN mix compile && mix assets.compile
+RUN mix compile
+RUN mix assets.compile
 
 CMD ["mix", "phx.server"]

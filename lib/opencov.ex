@@ -13,6 +13,7 @@ defmodule Opencov do
       worker(Opencov.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(Opencov.Worker, [arg1, arg2, arg3]),
+      {Samly.Provider, []},
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
