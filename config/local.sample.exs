@@ -22,6 +22,8 @@ config :opencov, :email,
     auth: :always
   ]
 
+config :phoenix, :json_library, Poison
+
 # SAML
 config :samly, Samly.Provider,
   idp_id_from: :path_segment,

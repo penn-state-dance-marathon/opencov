@@ -1,4 +1,5 @@
-FROM elixir:1.12-alpine
+# Cannot upgrade to 1.12 (erlang 24) because pubsub p2 child process handling
+FROM elixir:1.11-alpine
 
 RUN apk add --update-cache build-base git postgresql-client nodejs yarn
 
@@ -11,12 +12,10 @@ RUN mix local.hex --force && mix local.rebar --force
 COPY package.json ./
 RUN yarn install
 
-COPY mix.exs ./
-RUN mix deps.get || cat erl_crash.dump
-
 COPY . .
+RUN mix deps.get
 
-RUN mix compile
-RUN mix assets.compile
+
+RUN mix compile && mix assets.compile
 
 CMD ["mix", "phx.server"]

@@ -19,7 +19,6 @@ services:
       - "8000:4000"
     volumes:
       - ./config/local.sample.exs:/opencov/config/local.exs
-      - .:/opencov
     networks: 
       - internal
     depends_on: 
