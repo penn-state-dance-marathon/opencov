@@ -15,9 +15,11 @@ services:
 
   opencov:
     build: .
+    command: "tail -f /dev/null/"
     ports:
       - "8000:4000"
     volumes:
+      - .:/opencov
       - ./config/local.sample.exs:/opencov/config/local.exs
     networks: 
       - internal

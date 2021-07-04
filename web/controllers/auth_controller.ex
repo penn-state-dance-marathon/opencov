@@ -6,7 +6,17 @@ defmodule Opencov.AuthController do
   alias Opencov.Repo
 
   def login(conn, _params) do
-    render(conn, "login.html", email: "", error: nil, can_signup: can_signup?())
+    redirect(conn, external: KeycloakCustom.authorize_url!())
+    # render(conn, "login.html", email: "", error: nil, can_signup: can_signup?())
+  end
+
+  def callback(conn, %{"code" => code}) do
+    %{token: token} = KeycloakCustom.get_token!(code: code)
+    IO.puts "Callback"
+    IO.inspect token
+    conn
+    |> put_session(:token, token)
+    |> redirect(to: "/")
   end
 
   def make_login(conn, %{"login" => %{"email" => email, "password" => password}}) do
