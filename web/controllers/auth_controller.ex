@@ -12,10 +12,8 @@ defmodule Opencov.AuthController do
 
   def callback(conn, %{"code" => code}) do
     %{token: token} = KeycloakCustom.get_token!(code: code)
-    IO.puts "Callback"
-    IO.inspect token
     conn
-    |> put_session(:token, token)
+    |> put_session(:token, token.access_token)
     |> redirect(to: "/")
   end
 
