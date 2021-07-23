@@ -28,7 +28,12 @@ config :keycloak,
   realm: "THON",
   site: "https://access.thon.org",
   client_id: "opencov",
-  client_secret: "ac199849-d2bf-458f-9759-87faa3ae1296"
+  client_secret: "ac199849-d2bf-458f-9759-87faa3ae1296",
+  redirect_uri: "http://ngearhart.myqnapcloud.com:8000/login/callback"
+
+config :keycloak, Keycloak.Plug.VerifyToken,
+  hmac: "testing",
+  public_key: "sp.crt"
 
 config :phoenix_live_reload,
   dirs: [

@@ -15,7 +15,7 @@ defmodule Opencov.AuthController do
     %{token: token} = KeycloakCustom.get_token!(code: code)
     IO.inspect token
     conn
-    |> put_session(:token, token.access_token)
+    |> put_session(:token, token)
     |> redirect(to: "/")
   end
 

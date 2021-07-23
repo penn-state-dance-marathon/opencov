@@ -21,7 +21,7 @@ defmodule KeycloakCustom do
   alias OAuth2.Strategy.AuthCode
 
   def authorize_url!(params \\ []) do
-    Client.new(redirect_uri: "http://mail.noahgearhart.com:8000/login/callback")
+    Client.new(redirect_uri: keycloak_config()[:redirect_uri])
     |> OAuth2.Client.authorize_url!(params)
   end
 
@@ -33,7 +33,7 @@ defmodule KeycloakCustom do
   def get_token!(params \\ [], _headers \\ []) do
     data = Keyword.merge(params, client_secret: Client.new().client_secret)
 
-    Client.new(redirect_uri: "http://mail.noahgearhart.com:8000/login/callback")
+    Client.new(redirect_uri: keycloak_config()[:redirect_uri])
     |> OAuth2.Client.get_token!(data)
   end
 
@@ -53,5 +53,9 @@ defmodule KeycloakCustom do
     client
     |> OAuth2.Client.put_header("Accept", "application/json")
     |> AuthCode.get_token(params, headers)
+  end
+
+  defp keycloak_config do
+    Application.get_all_env(:keycloak)
   end
 end
