@@ -48,7 +48,6 @@ defmodule Opencov.Mixfile do
      {:plug_cowboy, "~> 2.0"},
     #  {:esaml, "~> 4.2"},
     #  {:samly, "1.0.0"},
-     {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:mix_test_watch, "~> 0.2", only: :dev},
      {:excoveralls, "~> 0.6", only: :test},
     #  {:poison, "~> 4.0"},
@@ -56,6 +55,7 @@ defmodule Opencov.Mixfile do
       {:sweet_xml, "~> 0.6.6"},
       {:keycloak, "~> 0.1.0"},
       {:phoenix_live_reload, "~> 1.3"},
+      # {:guardian, "~> 2.0"}
      {:mock, "~> 0.3", only: :test}]
   end
 
