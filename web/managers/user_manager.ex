@@ -20,7 +20,7 @@ defmodule Opencov.UserManager do
 
   def confirmation_changeset(model) do
     Ecto.Changeset.change(model)
-    |> put_change(:email, model.unconfirmed_email)
+    # |> put_change(:email, model.unconfirmed_email)
     |> put_change(:unconfirmed_email, nil)
     |> pipe_when(is_nil(model.confirmed_at), put_change(:confirmed_at, Timex.now))
   end
