@@ -28,15 +28,18 @@ config :opencov, :openid_connect_providers,
   keycloak: [
     discovery_document_uri: "https://access.thon.org/auth/realms/THON/.well-known/openid-configuration",
     client_id: "opencov",
-    client_secret: "ac199849-d2bf-458f-9759-87faa3ae1296",
+    client_secret: "ex",
     redirect_uri: "http://ngearhart.myqnapcloud.com:8000/login/callback",
     response_type: "code",
     scope: "openid email profile"
   ]
 
-config :keycloak, Keycloak.Plug.VerifyToken,
-  hmac: "testing",
-  public_key: "sp.crt"
+config :opencov,
+  admin_roles: [
+    "ec.Executive",
+    "ec.Technology",
+    "tech.LeadSystemsAdministrator"
+  ]
 
 config :phoenix_live_reload,
   dirs: [
