@@ -24,12 +24,15 @@ config :opencov, :email,
 
 config :phoenix, :json_library, Poison
 
-config :keycloak,
-  realm: "THON",
-  site: "https://access.thon.org",
-  client_id: "opencov",
-  client_secret: "ac199849-d2bf-458f-9759-87faa3ae1296",
-  redirect_uri: "http://ngearhart.myqnapcloud.com:8000/login/callback"
+config :opencov, :openid_connect_providers,
+  keycloak: [
+    discovery_document_uri: "https://access.thon.org/auth/realms/THON/.well-known/openid-configuration",
+    client_id: "opencov",
+    client_secret: "ac199849-d2bf-458f-9759-87faa3ae1296",
+    redirect_uri: "http://ngearhart.myqnapcloud.com:8000/login/callback",
+    response_type: "code",
+    scope: "openid email profile"
+  ]
 
 config :keycloak, Keycloak.Plug.VerifyToken,
   hmac: "testing",

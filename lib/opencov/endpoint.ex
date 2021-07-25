@@ -32,5 +32,4 @@ defmodule Opencov.Endpoint do
     key_length: 64
 
   plug Opencov.Router
-  plug Keycloak.Plug.VerifyToken
 end

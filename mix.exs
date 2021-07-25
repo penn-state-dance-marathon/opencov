@@ -53,7 +53,7 @@ defmodule Opencov.Mixfile do
     #  {:poison, "~> 4.0"},
       # {:esaml, "~> 4.2"},
       {:sweet_xml, "~> 0.6.6"},
-      {:keycloak, "~> 1.0.0"},
+      {:openid_connect, "~> 0.2.2"},
       {:phoenix_live_reload, "~> 1.3"},
       # {:guardian, "~> 2.0"}
      {:mock, "~> 0.3", only: :test}]
