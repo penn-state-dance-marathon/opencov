@@ -15,7 +15,8 @@ defmodule Opencov.AuthController do
          {:ok, claims} <- OpenIDConnect.verify(:keycloak, tokens["id_token"]) do
       IO.inspect claims
       conn
-      |> put_status(200)
+      |> Authentication.login(claims["email"], claims["name"])
+      |> redirect(to: "/")
     else
       _ -> send_resp(conn, 401, "")
     end

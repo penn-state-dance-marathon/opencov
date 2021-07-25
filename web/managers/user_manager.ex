@@ -12,10 +12,10 @@ defmodule Opencov.UserManager do
     |> validate_required(@required_fields)
     |> unique_constraint(:email)
     |> validate_email
-    |> assign_unconfirmed_email
-    |> unique_constraint(:unconfirmed_email)
-    |> pipe_when(opts[:generate_password], generate_password)
-    |> with_secure_password
+    # |> assign_unconfirmed_email
+    # |> unique_constraint(:unconfirmed_email)
+    # |> pipe_when(opts[:generate_password], generate_password)
+    # |> with_secure_password
   end
 
   def confirmation_changeset(model) do
