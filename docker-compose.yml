@@ -16,13 +16,16 @@ services:
       - internal
 
   opencov:
+    command: sh -c "sh /opencov/create_env.sh && mix phx.server"
     build: .
     ports:
       - "8000:4000"
     volumes:
       - ./lib:/opencov/lib
       - ./web:/opencov/web
-      - ./config/local.sample.exs:/opencov/config/local.exs
+      - ./config:/opencov/config
+    env_file:
+      - ./local.env
     networks: 
       - internal
     depends_on: 

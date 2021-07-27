@@ -5,3 +5,4 @@ node_modules
 .tags
 priv/static/js
 mix.lock
+config/local.exs
