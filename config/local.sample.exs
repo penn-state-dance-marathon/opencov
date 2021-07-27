@@ -28,7 +28,7 @@ config :opencov, :openid_connect_providers,
   keycloak: [
     discovery_document_uri: "https://access.thon.org/auth/realms/THON/.well-known/openid-configuration",
     client_id: "opencov",
-    client_secret: "ex",
+    client_secret: "f4449cc0-f5a3-4005-936d-2f4a80b20cf4",
     redirect_uri: "http://ngearhart.myqnapcloud.com:8000/login/callback",
     response_type: "code",
     scope: "openid email profile"
@@ -39,6 +39,10 @@ config :opencov,
     "ec.Executive",
     "ec.Technology",
     "tech.LeadSystemsAdministrator"
+  ],
+  permitted_roles: [
+    "ec.Executive",
+    "tech.all"
   ]
 
 config :phoenix_live_reload,
