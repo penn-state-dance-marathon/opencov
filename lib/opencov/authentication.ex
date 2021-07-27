@@ -19,15 +19,15 @@ defmodule Opencov.Authentication do
       case Repo.insert(changeset) do
         {:ok, user} = res ->
           userToLogin = user
-          res
+          UserService.finalize_confirmation!(userToLogin)
+          put_session(conn, user_id_key(), userToLogin.id)
         err -> 
           err
       end
-      UserService.finalize_confirmation!(userToLogin)
     else
       UserManager.changeset(userToLogin, %{admin: assign_admin}) |> Repo.update!
+      put_session(conn, user_id_key(), userToLogin.id)
     end
-    put_session(conn, user_id_key(), userToLogin.id)
   end
 
   def logout(conn) do

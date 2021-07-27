@@ -56,6 +56,7 @@ defmodule Opencov.Mixfile do
       {:openid_connect, "~> 0.2.2"},
       {:phoenix_live_reload, "~> 1.3"},
       # {:guardian, "~> 2.0"}
+      {:mariaex, "~> 0.8.2"},
      {:mock, "~> 0.3", only: :test}]
   end
 
