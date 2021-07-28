@@ -10,4 +10,4 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run tests
       run: |
-        docker-compose run opencov sh -c "sleep 10 && mix ecto.setup"
+        docker-compose run opencov sh -c "sleep 10 && sh /opencov/create_env.sh && mix ecto.setup"
