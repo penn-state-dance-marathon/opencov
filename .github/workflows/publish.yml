@@ -27,7 +27,7 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-    - name: Logout of Amazon ECR (mailtrain)
+    - name: Logout of Amazon ECR (coverage)
       if: always()
       run: docker logout ${{ steps.login-ecr-coverage.outputs.registry }}
   # deploy:
@@ -47,5 +47,5 @@ jobs:
   #         with:
   #           python-version: '3.x'
   #       - name: Initiate deployment
-  #         run: |	
-  #           aws ecs update-service --cluster mail-prod --service mail-prod --force-new-deployment --task-definition mail-prod
+          # run: |	
+          #   aws ecs update-service --cluster coverage-prod --service coverage-prod --force-new-deployment --task-definition coverage-prod
