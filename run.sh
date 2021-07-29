@@ -27,3 +27,5 @@ sed -i "s/$OLD/$NEW/g" "/opencov/config/local.exs"
 OLD="KEYCLOAK_SECRET"
 NEW=$KEYCLOAK_SECRET
 sed -i "s/$OLD/$NEW/g" "/opencov/config/local.exs"
+
+mix phx.server
