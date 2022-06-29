@@ -8,7 +8,7 @@ ENV MIX_ENV prod
 
 RUN mix local.hex --force && mix local.rebar --force
 
-COPY mix.exs mix.lock package.json yarn.lock ./
+COPY mix.exs mix.lock package.json ./
 
 RUN yarn install && mix deps.get
 
