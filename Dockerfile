@@ -15,6 +15,7 @@ RUN yarn install
 COPY . .
 RUN mix deps.get
 
+RUN mix deps.compile mime
 
 RUN mix compile && mix assets.compile
 
