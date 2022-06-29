@@ -8,7 +8,7 @@ defmodule Opencov do
 
     children = [
       # Start the endpoint when the application starts
-      supervisor(Opencov.Endpoint, []),
+      {Opencov.Endpoint, []},
       # Start the Ecto repository
       worker(Opencov.Repo, []),
       # Here you could define other workers and supervisors as children
